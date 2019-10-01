@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <title>DigiSalud</title>
+    <link rel="stylesheet" href="~/content/bootstrap/css/bootstrap.min.css">
+    <link href="~/Content/datepicker/css/bootstrap-datepicker.min.css"
+          rel="stylesheet" />
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+    <script src="~/content/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Content/datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/Content/datepicker/locales/bootstrap-datepicker.es.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        @RenderBody()
+    </div>
+</body>
+</html>

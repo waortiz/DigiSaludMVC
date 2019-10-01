@@ -1,0 +1,247 @@
+﻿
+@{
+    ViewBag.Title = "Ingresar";
+}
+
+<br />
+<form action="/Cliente/Ingresar" autocomplete="on" method="post" id="cliente" name="cliente">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                Datos del Cliente
+            </div>
+            <div class="card-body">
+                <div id="mensaje"></div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="primerNombre">Primer nombre</label>
+                            <input type="text" class="form-control" id="primerNombre"
+                                   name="primerNombre" required
+                                   placeholder="Primer nombre">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="segundoNombre">Segundo nombre</label>
+                            <input type="text" class="form-control" id="segundoNombre"
+                                   name="segundoNombre"
+                                   placeholder="Segundo nombre">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="primerNombre">Primer apellido</label>
+                            <input type="text" class="form-control" id="primerApellido"
+                                   name="primerNombre" required
+                                   placeholder="Primer apellido">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="segundoNombre">Segundo apellido</label>
+                            <input type="text" class="form-control" id="segundoApellido"
+                                   name="segundoApellido"
+                                   placeholder="Segundo apellido">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="tipoDocumento">Tipo de documento</label>
+                            <select class="form-control" id="tipoDocumento" name="=tipoDocumento">
+                                <option></option>
+                                <option value="1">Cédula de Ciudadanía</option>
+                                <option value="2">Tarjeta de Identidad</option>
+                                <option value="3">Tarjeta de Extranjería</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="numeroDocumento">Número de documento</label>
+                            <input type="number" required class="form-control numero" id="numeroDocumento"
+                                   name="numeroDocumento"
+                                   placeholder="Número de documento">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fechaNacimiento">Fecha de nacimiento</label>
+                            <div class="input-append date" id="datepicker"
+                                 data-date-format="dd/mm/yyyy">
+                                <input class="form-control" required
+                                       id="fechaNacimiento"
+                                       name="fechaNacimiento">
+                                <span class="add-on"><i class="icon-th"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Sexo</label>
+                            <div class="form-group">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="sexoMasculino" name="sexo" class="custom-control-input">
+                                    <label class="custom-control-label" for="sexoMasculino">Masculino</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="sexoFemenino" name="sexo" class="custom-control-input">
+                                    <label class="custom-control-label" for="sexoFemenino">Femenino</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Cotizante</label>
+                            <div class="form-check">
+                                <label class="form-check-label" for="cotizante">&nbsp;</label>
+                                <input type="checkbox" class="form-check-input" id="cotizante">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label for="tipoDocumento">Antecedentes</label>
+                            <select multiple size="10" class="form-control" id="antecendentesIniciales" name="antecendentesIniciales">
+                                <option value="1">Hipertensión</option>
+                                <option value="2">Aneurisma</option>
+                                <option value="3">ACV</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <input type="button" value="->" id="adicionar" class="form-control" /><br />
+                        <input type="button" value="<-" id="remover" class="form-control" />
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label for="tipoDocumento">Antecedentes Seleccionados</label>
+                            <select multiple size="10" id="antecendentes" name="antecendentes" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="segundoNombre">Observaciones</label>
+                            <textarea class="form-control" id="observaciones"
+                                      name="observaciones" rows="10" cols="10"
+                                      placeholder="Observaciones"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="submit" value="Guardar"
+                               class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('#datepicker').datepicker(
+            {
+                format: 'dd/mm/yyyy',
+                language: 'es',
+                autoclose: true
+            }
+        );
+
+        $('.numero').keyup(function () {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+
+        mensaje = {};
+        mensaje.warn = function (texto) {
+            $('#mensaje').
+                html('<div class="alert alert-danger">' +
+                    '<a class="close" data-dismiss="alert">x</a><span>'
+                    + texto + '</span></div>');
+        };
+        mensaje.inform = function (texto) {
+            $('#mensaje').
+                html('<div class="alert alert-primary">' +
+                    '<a class="close" data-dismiss="alert">x</a><span>'
+                    + texto + '</span></div>');
+        };
+        mensaje.remove = function () {
+            $('#mensaje').html('');
+        };
+
+        $('#adicionar').click(function () {
+            $('#antecendentesIniciales option:selected').each(function () {
+                $('#antecendentes').append("<option value='" + $(this).val() + "'>" + $(this).text() + "</option>");
+                $(this).remove();
+            });
+        });
+
+        $('#remover').click(function () {
+            $('#antecendentes option:selected').each(function () {
+                $('#antecendentesIniciales').append("<option value='" + $(this).val() + "'>" + $(this).text() + "</option>");
+                $(this).remove();
+            });
+        });
+
+        $('#cliente').submit(function (event) {
+            mensaje.remove();
+            if ($('#numeroDocumento').val().length < 6) {
+                mensaje.warn('El número de documento debe' +
+                    ' tener mínimo seis dígitos');
+                return false;
+            }
+            if (!validarFechaNacimiento($('#fechaNacimiento').val())) {
+                mensaje.warn('La fecha de nacimiento no es válida');
+                return false;
+            }
+            if (!$('#sexoMasculino:checked').val() && !$('#sexoFemenino:checked').val()) {
+                mensaje.warn('Debe seleccionar el sexo');
+                return false;
+            }
+
+            event.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Ingresar", "Cliente")',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    mensaje.inform("Cliente almacenado correctamente.");
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    mensaje.warn("Error al almacenar el cliente.");
+                }
+            });
+        });
+
+        function validarFechaNacimiento(fecha) {
+            if (fecha === "") return false;
+            var fechas = fecha.split("/");
+            var nuevaFecha = new Date(parseInt(fechas[2], 10),
+                parseInt(fechas[1], 10) - 1,
+                parseInt(fechas[0], 10));
+            if (nuevaFecha > new Date()) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
+</form>
