@@ -52,7 +52,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="tipoDocumento">Tipo de documento</label>
-                            <select class="form-control" id="tipoDocumento" name="=tipoDocumento">
+                            <select class="form-control" id="tipoDocumento" name="tipoDocumento">
                                 <option></option>
                                 <option value="1">Cédula de Ciudadanía</option>
                                 <option value="2">Tarjeta de Identidad</option>
@@ -87,11 +87,11 @@
                             <label class="control-label">Sexo</label>
                             <div class="form-group">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="sexoMasculino" name="sexo" class="custom-control-input">
+                                    <input type="radio" id="sexoMasculino" name="sexo" class="custom-control-input" value="M">
                                     <label class="custom-control-label" for="sexoMasculino">Masculino</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="sexoFemenino" name="sexo" class="custom-control-input">
+                                    <input type="radio" id="sexoFemenino" name="sexo" class="custom-control-input" value="F">
                                     <label class="custom-control-label" for="sexoFemenino">Femenino</label>
                                 </div>
                             </div>
@@ -104,7 +104,7 @@
                             <label class="control-label">Cotizante</label>
                             <div class="form-check">
                                 <label class="form-check-label" for="cotizante">&nbsp;</label>
-                                <input type="checkbox" class="form-check-input" id="cotizante">
+                                <input type="checkbox" class="form-check-input" id="cotizante" name="cotizante">
                             </div>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                     <div class="col-md-5">
                         <div class="form-group">
                             <label for="tipoDocumento">Antecedentes Seleccionados</label>
-                            <select multiple size="10" id="antecendentes" name="antecendentes" class="form-control"></select>
+                            <select multiple size="10" id="antecendentes" name="antecendentes[]" class="form-control"></select>
                         </div>
                     </div>
                 </div>
@@ -218,8 +218,8 @@
             var formData = new FormData(this);
             $.ajax({
                 type: "POST",
-                url: '@Url.Action("Ingresar", "Cliente")',
-                data: formData,
+                url: '/Cliente/Ingresar',
+                data: $("#cliente").serializeArray(),
                 processData: false,
                 contentType: false,
                 success: function (response) {
