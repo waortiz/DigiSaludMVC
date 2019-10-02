@@ -8,6 +8,6 @@ namespace DigiSalud.Models
     public class Cliente
     {
         public string PrimerNombre { get; set; }
-        public int[] Antecedentes { get; set; }
+        public List<int> Antecedentes { get; set; }
     }
 }

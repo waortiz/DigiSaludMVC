@@ -7,7 +7,7 @@
 <form action="/Cliente/Ingresar" autocomplete="on" method="post" id="cliente" name="cliente">
     <div class="container">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header bg-primary text-white">
                 Datos del Cliente
             </div>
             <div class="card-body">
@@ -63,7 +63,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="numeroDocumento">Número de documento</label>
-                            <input type="number" required class="form-control numero" id="numeroDocumento"
+                            <input type="text" required class="form-control numero" id="numeroDocumento"
                                    name="numeroDocumento"
                                    placeholder="Número de documento">
                         </div>
@@ -113,7 +113,7 @@
                     <div class="col-md-5">
                         <div class="form-group">
                             <label for="tipoDocumento">Antecedentes</label>
-                            <select multiple size="10" class="form-control" id="antecendentesIniciales" name="antecendentesIniciales">
+                            <select multiple size="10" class="form-control" id="antecedentesIniciales" name="antecedentesIniciales">
                                 <option value="1">Hipertensión</option>
                                 <option value="2">Aneurisma</option>
                                 <option value="3">ACV</option>
@@ -131,7 +131,7 @@
                     <div class="col-md-5">
                         <div class="form-group">
                             <label for="tipoDocumento">Antecedentes Seleccionados</label>
-                            <select multiple size="10" id="antecendentes" name="antecendentes[]" class="form-control"></select>
+                            <select multiple size="10" id="antecedentes" name="antecedentes" class="form-control"></select>
                         </div>
                     </div>
                 </div>
@@ -185,15 +185,15 @@
         };
 
         $('#adicionar').click(function () {
-            $('#antecendentesIniciales option:selected').each(function () {
-                $('#antecendentes').append("<option value='" + $(this).val() + "'>" + $(this).text() + "</option>");
+            $('#antecedentesIniciales option:selected').each(function () {
+                $('#antecedentes').append("<option value='" + $(this).val() + "'>" + $(this).text() + "</option>");
                 $(this).remove();
             });
         });
 
         $('#remover').click(function () {
-            $('#antecendentes option:selected').each(function () {
-                $('#antecendentesIniciales').append("<option value='" + $(this).val() + "'>" + $(this).text() + "</option>");
+            $('#antecedentes option:selected').each(function () {
+                $('#antecedentesIniciales').append("<option value='" + $(this).val() + "'>" + $(this).text() + "</option>");
                 $(this).remove();
             });
         });
@@ -213,13 +213,15 @@
                 mensaje.warn('Debe seleccionar el sexo');
                 return false;
             }
-
+            $('#antecedentes option').each(function () {
+                $(this).prop("selected", true);
+            });
             event.preventDefault();
             var formData = new FormData(this);
             $.ajax({
                 type: "POST",
                 url: '/Cliente/Ingresar',
-                data: $("#cliente").serializeArray(),
+                data: formData,
                 processData: false,
                 contentType: false,
                 success: function (response) {
