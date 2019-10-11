@@ -1,5 +1,6 @@
-﻿
+﻿@model DigiSalud.Models.Cliente
 @{
+
     ViewBag.Title = "Ingresar";
 }
 
@@ -16,9 +17,14 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="primerNombre">Primer nombre</label>
-                            <input type="text" class="form-control" id="primerNombre"
-                                   name="primerNombre" required
-                                   placeholder="Primer nombre">
+                            @Html.TextBoxFor(c => c.PrimerNombre,
+                            new
+                              {
+                                  @class = "form-control",
+                                  @placeholder = "Primer Nombre",
+                                  @maxlength = "100",
+                                  @required = "required"
+                              })
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -35,7 +41,7 @@
                         <div class="form-group">
                             <label for="primerNombre">Primer apellido</label>
                             <input type="text" class="form-control" id="primerApellido"
-                                   name="primerNombre" required
+                                   name="primerApellido" required
                                    placeholder="Primer apellido">
                         </div>
                     </div>
@@ -54,9 +60,10 @@
                             <label for="tipoDocumento">Tipo de documento</label>
                             <select class="form-control" id="tipoDocumento" name="tipoDocumento">
                                 <option></option>
-                                <option value="1">Cédula de Ciudadanía</option>
-                                <option value="2">Tarjeta de Identidad</option>
-                                <option value="3">Tarjeta de Extranjería</option>
+                                @foreach (SelectListItem tipoDocumento in ViewBag.TiposDocumento)
+                                {
+                                    <option value="@tipoDocumento.Value">@tipoDocumento.Text</option>
+                                }
                             </select>
                         </div>
                     </div>
@@ -104,7 +111,7 @@
                             <label class="control-label">Cotizante</label>
                             <div class="form-check">
                                 <label class="form-check-label" for="cotizante">&nbsp;</label>
-                                <input type="checkbox" class="form-check-input" id="cotizante" name="cotizante">
+                                <input type="checkbox" class="form-check-input" id="cotizante" name="cotizante" value="true">
                             </div>
                         </div>
                     </div>
