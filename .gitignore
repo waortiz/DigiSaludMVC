@@ -3,3 +3,11 @@
 ################################################################################
 
 /.vs
+/DigiSalud/bin
+/DigiSalud/obj/Debug
+/Entidades/bin/Debug
+/Entidades/obj/Debug
+/Repositorio/bin/Debug
+/Repositorio/obj/Debug
+/Servicios/bin/Debug
+/Servicios/obj/Debug

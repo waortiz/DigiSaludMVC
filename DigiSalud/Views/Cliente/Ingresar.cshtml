@@ -94,11 +94,11 @@
                             <label class="control-label">Sexo</label>
                             <div class="form-group">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="sexoMasculino" name="sexo" class="custom-control-input" value="M">
+                                    <input type="radio" id="sexoMasculino" name="sexo" class="custom-control-input" value="2">
                                     <label class="custom-control-label" for="sexoMasculino">Masculino</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="sexoFemenino" name="sexo" class="custom-control-input" value="F">
+                                    <input type="radio" id="sexoFemenino" name="sexo" class="custom-control-input" value="1">
                                     <label class="custom-control-label" for="sexoFemenino">Femenino</label>
                                 </div>
                             </div>
@@ -121,9 +121,10 @@
                         <div class="form-group">
                             <label for="tipoDocumento">Antecedentes</label>
                             <select multiple size="10" class="form-control" id="antecedentesIniciales" name="antecedentesIniciales">
-                                <option value="1">Hipertensión</option>
-                                <option value="2">Aneurisma</option>
-                                <option value="3">ACV</option>
+                                @foreach (SelectListItem antecedente in ViewBag.Antecedentes)
+                                {
+                                    <option value="@antecedente.Value">@antecedente.Text</option>
+                                }
                             </select>
                         </div>
                     </div>
