@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entidades;
 
 namespace Repositorio
 {
@@ -71,5 +72,42 @@ namespace Repositorio
             }
         }
 
+        public List<Cliente> ObtenerClientes()
+        {
+            List<Cliente> clientes = new List<Cliente>();
+            using (SqlConnection conexion =
+                new SqlConnection(ConfigurationManager.
+                    ConnectionStrings["DigiSalud"].ConnectionString))
+            {
+                conexion.Open();
+                SqlCommand comando = new SqlCommand();
+                comando.Connection = conexion;
+                comando.CommandText = "SELECT cli.IdCliente, cli.PrimerNombre, cli.SegundoNombre, cli.PrimerApellido, cli.SegundoApellido, cli.NumeroDocumento, cli.IdTipoDocumento, td.Nombre NombreTipoDocumento, cli.FechaNacimiento FROM Clientes cli INNER JOIN TiposDocumento td on td.IdTipoDocumento = cli.IdTipoDocumento ORDER by cli.NumeroDocumento";
+
+                using (SqlDataReader reader = comando.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Entidades.Cliente cliente= new Entidades.Cliente();
+                        cliente.IdCliente = Convert.ToInt64(reader["IdCliente"]);
+                        cliente.PrimerNombre = reader["PrimerNombre"].ToString();
+                        cliente.SegundoNombre = reader["SegundoNombre"].ToString();
+                        cliente.PrimerApellido = reader["PrimerApellido"].ToString();
+                        cliente.SegundoApellido = reader["SegundoApellido"].ToString();
+                        cliente.NumeroDocumento = reader["NumeroDocumento"].ToString();
+                        cliente.FechaNacimiento = (DateTime)reader["FechaNacimiento"];
+                        cliente.TipoDocumento = new Entidades.TipoDocumento()
+                        {
+                            Id = Convert.ToInt32(reader["IdTipoDocumento"]),
+                            Nombre = reader["NombreTipoDocumento"].ToString()
+                        };
+
+                        clientes.Add(cliente);
+                    }
+                }
+            }
+
+            return clientes;
+        }
     }
 }

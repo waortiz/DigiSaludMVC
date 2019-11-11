@@ -20,5 +20,10 @@ namespace Servicios
         {
             repositorio.IngresarCliente(Cliente);
         }
+
+        public List<Cliente> OntenerClientes()
+        {
+            return repositorio.ObtenerClientes();
+        }
     }
 }
